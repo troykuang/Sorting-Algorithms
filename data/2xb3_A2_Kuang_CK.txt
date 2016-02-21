@@ -1,0 +1,9 @@
+Course Code: 	COMP SCI 2XB3
+Full Name: 		Chaoyi Kuang
+Student Number: 001402031
+
+By virtue of submitting this document I electronically sign and date 
+that the work being submitted is my own individual work.
+Chaoyi Kuang, Feb 21, 2016
+
+Design Decisions: ArrayList is used in this project.

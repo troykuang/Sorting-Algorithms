@@ -17,7 +17,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import edu.princeton.cs.algs4.Stopwatch;
-
+/**
+ * JUnit testing for all sorting algorithms.
+ * @author Chaoyi Kuang
+ *
+ */
 public class SortTest {
 	public ArrayList<Job[]> jobsLists;
 
@@ -29,8 +33,13 @@ public class SortTest {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	/**
+	 * Set up the testing environment. Construct the testing job lists
+	 * @throws IOException
+	 */
 	@Before
 	public void setUp() throws IOException {
+		// An ArrayList that contains all the Job lists
 		ArrayList<Job[]> jobsLists = new ArrayList<Job[]>();
 		this.jobsLists = jobsLists;
 		String folder = "data";
@@ -38,9 +47,11 @@ public class SortTest {
 		Scanner input = new Scanner(f);
 		while (input.hasNextLine()) {
 			String currentLine = input.nextLine();
+			// Split the whole line by "," and get jobID and jobTime by trimming the substrings 
 			String[] currentList = currentLine.split(",");
 			int currentLength = currentList.length/2;
 			Job[] currentJobs = new Job[currentLength];
+			// Construct the current job and add it to the list
 			for (int i=0;i<currentList.length;i++){
 				String jobID = currentList[i].substring(1);
 				int len= currentList[i+1].length();
@@ -48,6 +59,7 @@ public class SortTest {
 				currentJobs[i/2] = new Job(jobID,Integer.parseInt(jobTime));
 				i++;
 			}
+			// Add this line of Job list to ArrayList
 			jobsLists.add(currentJobs);
 		}
 		input.close();
@@ -58,6 +70,9 @@ public class SortTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test Regular Insertion Sort and measure its running time using the StopWatch library.
+	 */
 	@Test
 	public void testInsertSort() {
 		System.out.println("InsertSort Testing Begins:");
@@ -76,7 +91,10 @@ public class SortTest {
 		System.out.println("InsertSort Testing Ends.");
 		System.out.println();
 	}
-	
+
+	/**
+	 * Test Comparable Insertion Sort and measure its running time using the StopWatch library.
+	 */
   @Test
 	public void testInsertComparable() {
 	  System.out.println("InsertComparable Testing Begins:");
@@ -96,7 +114,11 @@ public class SortTest {
 		System.out.println("InsertComparable Testing Ends.");
 		System.out.println();
 	}
-	@Test
+	
+  /**
+   * Test Binary Insertion Sort and measure its running time using the StopWatch library.
+   */
+  @Test
 	public void testInsertBinary() {
 		System.out.println("InsertBinary Testing Begins:");
 		for (int i=0;i<7;i++){
@@ -118,7 +140,10 @@ public class SortTest {
 		System.out.println();
 	}
 
-	@Test
+  /**
+   * Test Merge Sort and measure its running time using the StopWatch library.
+   */
+    @Test
 	public void testMergeSort() {
 		System.out.println("MergeSort Testing Begins:");
 		for (int i=0;i<7;i++){
@@ -140,9 +165,12 @@ public class SortTest {
 		System.out.println();
 	}
 	
-	@Test
-	public void testSortHeap() {
-		System.out.println("SortHeap Testing Begins:");
+    /**
+	 * Test Heap Sort and measure its running time using the StopWatch library.
+	 */
+    @Test
+	public void testHeapSort() {
+		System.out.println("HeapSort Testing Begins:");
 		for (int i=0;i<7;i++){
 			Stopwatch sw = new Stopwatch();			
 			Job[] current = this.jobsLists.get(i);
@@ -158,7 +186,7 @@ public class SortTest {
 			}
 			assertTrue(Heap.isSorted(current));
 		}
-		System.out.println("SortHeap Testing Ends.");
+		System.out.println("HeapSort Testing Ends.");
 		System.out.println();
 	}
 	

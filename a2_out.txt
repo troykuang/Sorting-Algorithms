@@ -1,1 +1,35 @@
-Algorithm for the best to the worst: Heap Sort, Merge Sort, Regular Insertion Sort, Binary Insertion Sort, Comparable Insertion Sort
+
+----------------------------------------------------------------------------------
+| Size of data | sortInsert | sortComparable | sortBinary | sortMerge | sortHeap |
+----------------------------------------------------------------------------------
+|     2^4      |	0.000   |	  0.000		 |	  0.000   |   0.000   |  0.001   |
+----------------------------------------------------------------------------------
+|     2^6	   |	0.001	|	  0.000		 |	  0.000   |   0.000   |  0.000   |
+----------------------------------------------------------------------------------
+|     2^8	   |	0.002	|	  0.002	 	 |    0.001	  |   0.001	  |  0.001	 |
+----------------------------------------------------------------------------------
+|     2^10     |	0.005	| 	  0.008 	 |    0.004   |   0.001   |  0.001   |
+----------------------------------------------------------------------------------
+|     2^12 	   |	0.016	|     0.035      |    0.028   |   0.002   |  0.004   |
+----------------------------------------------------------------------------------
+
+
+Sorting Algorithms from the Best to the Worst based on their running times:
+1) Heap Sort;
+2) Merge Sort; 
+3) Regular Insertion Sort;
+4) Binary Insertion Sort;
+5) Comparable Insertion Sort.
+
+According to the chart in the normal scale, we can easily observe that all the plots 
+for Insertion Sorts are similar to the quadratic plots. And log-log chart confirms our 
+hypotheses, that is the running time of Insertion Sort is quadratic, since its plot in 
+log-log are linear. Moreover, we can take a closer look at the code for Insertion Sorts. 
+Each time, the loops iterates 1,2,3,…, N times, in the worst case which shows that the 
+running time is also O(N^2).
+As for merge sort, it takes O(logN) times to split the array and O(N) times to merge the
+subarrays together. Hence, the time complexity is O(NlogN). In terms of Heap Sort, we 
+need logN times for each element to sink after we take out the maximum key, in the worst 
+case and there are N elements indicating that the running time would also be O(NlogN). 
+And from the log-log plot we can tell the plot for both merge sort and heap sort are 
+linearithmic which confirms our hypotheses as well.

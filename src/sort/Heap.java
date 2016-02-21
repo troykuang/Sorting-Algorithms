@@ -1,12 +1,12 @@
 package sort;
 /**
- * A class designed for sorting, using Heap Sort.
+ * A class uses Heap sort to sort an array containing times of jobs
  * @author Chaoyi Kuang
  *
  */
 public class Heap {
 	/**
-	 * heap sort using Comparable
+	 * Heap sort using Comparable
 	 * @param x - the input array containing times of jobs that need to be sorted.
 	 * @param n - the size of the input array
 	 */
@@ -32,9 +32,19 @@ public class Heap {
 			x[i-1]=heapX[i];
 		}
 		
-		
 	}
+
+	/**
+	 * Top-down reheapify
+	 * @param x - the input array containing times of jobs that need to be sorted.
+	 * @param k - the index of the element needs to be sinked.
+	 * @param n - the size of the input array.
+	 */
 	private static void sink(Comparable[] x, int k, int n){
+		// exchanging the node with the larger of its two children. This switch may 
+		// cause a violation at the child; we fix that violation in the same way, and 
+		// so forth, moving down the heap until we reach a node with both children 
+		// smaller (or equal), or the bottom. 
 		while (2*k<=n){
 			int j = 2*k ;
 			if ((j<n) && (x[j].compareTo(x[j+1])<0))
@@ -43,14 +53,26 @@ public class Heap {
 				break;
 			exch(x,k,j);
 			k = j;
-		}
-		
+		}	
 	}
+	
+	/**
+	 * Exchange two elements in a Comparable array
+	 * @param x - the input array containing times of jobs that need to be sorted.
+	 * @param i - the index of the first element to be exchanged.
+	 * @param j - the index of the second element to be exchanged.
+	 */
 	private static void exch(Comparable[] x, int i, int j){
 		Comparable temp = x[i];
 		x[i] = x[j];
 		x[j] = temp;
 	}
+	
+	/**
+	 * Check the resulting array is already sorted
+	 * @param a - the input array containing times of jobs that need to be examined whether it's sorted or not
+	 * @return true if the array is sorted; and false it's not sorted.
+	 */
 	public static boolean isSorted(Comparable[] a){
 		for (int i=1;i<a.length;i++)
 			if (a[i].compareTo(a[i-1])<0) return false;
